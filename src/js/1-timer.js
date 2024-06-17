@@ -4,13 +4,12 @@ import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+import imageUrl from '../img/bi_exclamation-triangle.svg';
 
-
-const inputElement = document.querySelector('#datatime-picker');
+const inputElem = document.querySelector('#datetime-picker');
 const startButton = document.querySelector('[data-start]');
 startButton.disabled = true;
 let userSelectedDate;
-
 
 const messageOptions = {
     title: 'Error',
@@ -47,8 +46,7 @@ const options = {
   },
 };
 
-
-flatpickr(inputElement, options);
+flatpickr(inputElem, options);
 
 startButton.addEventListener('click', onStartButtonClick);
 
@@ -72,8 +70,6 @@ function onStartButtonClick(event) {
     }, userSelectedDate-initialTime)
 }
 
-
-
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -93,3 +89,6 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+function addZero(value) {
+    return value.toString().padStart(2, '0');
+}
